@@ -1,5 +1,9 @@
+import { ChatInput } from "@/components/ChatInput/index"
+
 export const Dashboard = () => {
     return(
-        <div> Hi, Dashboard</div>
+        <div>
+            <ChatInput/>
+        </div>
     )
 }
