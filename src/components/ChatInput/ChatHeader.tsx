@@ -12,6 +12,7 @@ import {
 
 import { IoChevronDownSharp } from "react-icons/io5";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { useWithAuth } from "@/hooks/useWithAuth";
 
 const ToolbarItem = ({
   children,
@@ -40,7 +41,20 @@ const ToolbarItem = ({
 };
 
 const ChatToolBar = () => {
-  const [activeTool, setActiveTool] = useState<string | null>("bold");
+  const [activeTool] = useState<string | null>("bold");
+  
+  const handleFormatting = useWithAuth(() => {
+     alert("function not implemented")
+  });
+  
+  const handleListAction = useWithAuth(() => {
+     alert("function not implemented")
+  });
+  
+  const handleBlockAction = useWithAuth(() => {
+    alert("function not implemented")
+  });
+
   const InputToolBarOptions = {
     FORMATTING: [
       {
@@ -88,7 +102,7 @@ const ChatToolBar = () => {
       <div className="flex border-r border-black/5 px-2 ">
         {InputToolBarOptions.FORMATTING.map((item, index) => (
           <ToolbarItem
-            onClick={() => setActiveTool(item.value)}
+            onClick={handleFormatting}
             isActive={item.value === activeTool}
             key={index}
           >
@@ -99,7 +113,7 @@ const ChatToolBar = () => {
       <div className="flex items-center border-r border-black/5 px-2">
         {InputToolBarOptions.LIST.map((item, index) => (
           <ToolbarItem
-            onClick={() => setActiveTool(item.value)}
+            onClick={handleListAction}
             isActive={item.value === activeTool}
             key={index}
           >
@@ -110,7 +124,7 @@ const ChatToolBar = () => {
       <div className="flex px-2">
         {InputToolBarOptions.BLOCK.map((item, index) => (
           <ToolbarItem
-            onClick={() => setActiveTool(item.value)}
+            onClick={handleBlockAction}
             isActive={item.value === activeTool}
             key={index}
           >
@@ -123,10 +137,15 @@ const ChatToolBar = () => {
 };
 
 export const ChatHeader = () => {
+
+  const handleDelete = useWithAuth(() => {
+     alert("function not implemented")
+  });
+
   return (
     <div className="flex justify-between items-center">
       <ChatToolBar />
-      <div className="bg-[#ffd9d9] cursor-pointer text-red-500 h-8 w-8 flex items-center justify-center rounded-[4px]">
+      <div onClick={handleDelete} className="bg-[#ffd9d9] cursor-pointer text-red-500 h-8 w-8 flex items-center justify-center rounded-[4px]">
         <RiDeleteBin5Line />
       </div>
     </div>

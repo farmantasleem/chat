@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { IoMdSend, IoIosAdd } from "react-icons/io";
 import { AiOutlineAudio } from "react-icons/ai";
 import { IoVideocamOutline } from "react-icons/io5";
+import { useWithAuth } from "@/hooks/useWithAuth";
 
 const FooterAction = ({
   children,
@@ -29,21 +30,27 @@ const FooterAction = ({
     </div>
   );
 };
-export const ChatFooter = () => {
+export const ChatFooter = ({ onSend }: { onSend: () => void }) => {
+
+  const handleAction = useWithAuth(onSend);
+
   return (
     <div className="flex justify-between py-2 items-center">
       <div className="flex items-center gap-x-1">
-        <FooterAction isActive onClick={() => {}}>
+        <FooterAction isActive onClick={handleAction}>
           <IoIosAdd />
         </FooterAction>
-         <FooterAction  onClick={() => {}}>
+        <FooterAction onClick={handleAction}>
           <AiOutlineAudio />
         </FooterAction>
-         <FooterAction  onClick={() => {}}>
+        <FooterAction onClick={handleAction}>
           <IoVideocamOutline />
         </FooterAction>
       </div>
-      <IoMdSend className="text-[#5157ea] text-2xl cursor-pointer" />
+      <IoMdSend
+        onClick={handleAction}
+        className="text-[#5157ea] text-2xl cursor-pointer"
+      />
     </div>
   );
 };

@@ -1,12 +1,13 @@
-import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
 import Navigation from "./Navigation";
+import { AccountProvider } from "./context/Account";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Navigation />
+      <AccountProvider>
+        <Navigation />
+      </AccountProvider>
     </BrowserRouter>
   );
 }
