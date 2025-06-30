@@ -15,7 +15,7 @@ export const Post = ({ data }: { data: PostProps }) => {
   return (
     <div
       onClick={handleAction}
-      className="bg-[#f6f6f6] w-[35%] h-fit p-3 rounded-[12px]"
+      className="bg-[#f6f6f6] w-[500px] h-fit p-3 rounded-[12px]"
     >
       {/* Post Header */}
       <div className="flex gap-x-1 items-start p-2 bg-white rounded-t-[12px]">
